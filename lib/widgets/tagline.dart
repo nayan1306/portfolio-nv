@@ -58,7 +58,8 @@ class _TagLineState extends State<TagLine> {
           'Driven by',
           style: GoogleFonts.robotoMono().copyWith(
             color: Colors.grey,
-            fontSize: 25,
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
           ),
           strutStyle: const StrutStyle(
             fontSize: 20,
@@ -96,7 +97,7 @@ class _TagLineState extends State<TagLine> {
                   style: GoogleFonts.gloriaHallelujah().copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 30,
+                    fontSize: 25,
                   ),
                 )
                 .roll(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/widgets/git_hub_button.dart';
 import 'package:portfolio_website/widgets/hover_button.dart';
+import 'package:portfolio_website/widgets/intro_text.dart';
 import 'package:portfolio_website/widgets/tagline.dart';
 
 class SectionOne extends StatelessWidget {
@@ -28,8 +28,9 @@ class SectionOne extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Image.asset("assets/logo_nv.png", width: 30, height: 30),
-
+                // Image.asset("assets/logo_nv.png", width: 30, height: 30),
+                const SizedBox(width: 10),
+                TagLine(),
                 const SizedBox(width: 2),
                 Expanded(
                   child: Text(
@@ -81,20 +82,22 @@ class SectionOne extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 20),
-                        TagLine(),
+
                         SizedBox(height: 20),
-                        SizedBox(
-                          width: screenWidth * 0.28,
-                          child: Text(
-                            "Crafting pixel-perfect Flutter apps with precision and creativity. I'm driven by innovation, constantly exploring new technologies to build seamless and intuitive experiences.",
-                            style: GoogleFonts.orbitron(
-                              color: const Color.fromARGB(197, 255, 255, 255),
-                              fontWeight: FontWeight.w400,
-                              fontSize: 16,
-                              letterSpacing: 1.8,
-                            ),
-                          ),
-                        ),
+                        // SizedBox(
+                        //   width: screenWidth * 0.28,
+                        //   child: Text(
+                        //     "Crafting pixel-perfect Flutter apps with precision and creativity. I'm driven by innovation, constantly exploring new technologies to build seamless and intuitive experiences.",
+                        //     style: GoogleFonts.orbitron(
+                        //       color: const Color.fromARGB(197, 255, 255, 255),
+                        //       fontWeight: FontWeight.w400,
+                        //       fontSize: 16,
+                        //       letterSpacing: 1.8,
+                        //     ),
+                        //   ),
+                        // ),
+                        buildAnimatedIntroText(screenWidth),
+
                         const SizedBox(height: 20),
                         // TagLine(),
                         SizedBox(height: 20),
