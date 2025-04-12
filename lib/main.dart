@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       ),
 
       debugShowCheckedModeBanner: false,
-      home: const LandingPage(title: 'It Works!'),
+      home: const LandingPage(),
     );
   }
 }
