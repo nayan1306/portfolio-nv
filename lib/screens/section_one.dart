@@ -16,7 +16,23 @@ class SectionOne extends StatelessWidget {
 
     return Container(
       height: responsiveHeight,
-      decoration: const BoxDecoration(color: Color.fromARGB(0, 0, 0, 0)),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: NetworkImage(
+            "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDE5YmNnaHo4aGdweGxvcmMxbGc4MWNra2xid3VucWg3NnZzMTc2aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/elcAvTEXkG02d17sr7/giphy.gif",
+          ), // Make sure to add your image to assets
+          fit: BoxFit.fill,
+        ),
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Colors.black.withOpacity(0.8),
+            const Color.fromARGB(255, 31, 31, 31).withOpacity(0.6),
+            Colors.transparent,
+          ],
+        ),
+      ),
       child: Column(
         // mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,

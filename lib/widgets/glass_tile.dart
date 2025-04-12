@@ -28,14 +28,14 @@ class GlassTile extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 18.0, sigmaY: 18.0),
+          filter: ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
           child: Container(
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: Colors.white.withOpacity(0.05),
               boxShadow: [
                 BoxShadow(
-                  color: const Color.fromARGB(255, 68, 68, 68).withOpacity(0.3),
+                  color: const Color.fromARGB(255, 39, 39, 39).withOpacity(0.6),
                   blurRadius: 12,
                   spreadRadius: 1,
                 ),
