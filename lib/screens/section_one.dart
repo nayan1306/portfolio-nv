@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/widgets/git_hub_button.dart';
 import 'package:portfolio_website/widgets/hover_button.dart';
+import 'package:portfolio_website/widgets/tagline.dart';
 
 class SectionOne extends StatelessWidget {
   const SectionOne({super.key});
@@ -28,6 +29,7 @@ class SectionOne extends StatelessWidget {
             child: Row(
               children: [
                 Image.asset("assets/logo_nv.png", width: 30, height: 30),
+
                 const SizedBox(width: 2),
                 Expanded(
                   child: Text(
@@ -79,6 +81,8 @@ class SectionOne extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 20),
+                        TagLine(),
+                        SizedBox(height: 20),
                         SizedBox(
                           width: screenWidth * 0.28,
                           child: Text(
@@ -91,6 +95,9 @@ class SectionOne extends StatelessWidget {
                             ),
                           ),
                         ),
+                        const SizedBox(height: 20),
+                        // TagLine(),
+                        SizedBox(height: 20),
                       ],
                     ),
                   ),
