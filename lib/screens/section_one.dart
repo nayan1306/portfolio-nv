@@ -3,6 +3,7 @@ import 'package:portfolio_website/widgets/git_hub_button.dart';
 import 'package:portfolio_website/widgets/glass_tile.dart';
 import 'package:portfolio_website/widgets/hover_button.dart';
 import 'package:portfolio_website/widgets/intro_text.dart';
+import 'package:portfolio_website/widgets/stars_bg.dart';
 import 'package:portfolio_website/widgets/tagline.dart';
 
 class SectionOne extends StatelessWidget {
@@ -14,135 +15,125 @@ class SectionOne extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final responsiveHeight = screenHeight * 1.3;
 
-    return Container(
+    return SizedBox(
       height: responsiveHeight,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: NetworkImage(
-            "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNDE5YmNnaHo4aGdweGxvcmMxbGc4MWNra2xid3VucWg3NnZzMTc2aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/elcAvTEXkG02d17sr7/giphy.gif",
-          ), // Make sure to add your image to assets
-          fit: BoxFit.fill,
-        ),
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Colors.black.withOpacity(0.8),
-            const Color.fromARGB(255, 31, 31, 31).withOpacity(0.6),
-            Colors.transparent,
-          ],
-        ),
-      ),
-      child: Column(
-        // mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
+      width: double.infinity,
+      child: Stack(
         children: [
-          // Responsive Custom AppBar
+          // Gradient overlay
           Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: screenWidth * 0.11,
-              vertical: 12,
-            ),
-            child: Row(
-              children: [
-                // Image.asset("assets/logo_nv.png", width: 30, height: 30),
-                const SizedBox(width: 10),
-                TagLine(),
-                const SizedBox(width: 2),
-                Expanded(
-                  child: Text(
-                    "",
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                GitHubButton(),
-                HoverButton(buttonText: "Sponser", onPressed: () {}),
-                SizedBox(width: 20),
-                HoverButton(buttonText: "CONTACT", onPressed: () {}),
-              ],
-            ),
-          ),
-
-          // Section Body
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: screenWidth * 0.11,
-                    top: screenHeight * 0.1,
-                  ),
-                  child: SizedBox(
-                    width: screenWidth * 0.35,
-                    // padding: const EdgeInsets.symmetric(
-                    //   horizontal: 40,
-                    //   vertical: 20,
-                    // ),
-                    // color: Colors.amber,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 20),
-                        Text(
-                          "Nayan Verma",
-                          style: Theme.of(
-                            context,
-                          ).textTheme.headlineMedium?.copyWith(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 90,
-                          ),
-                        ),
-                        const SizedBox(height: 20),
-
-                        SizedBox(height: 20),
-                        // SizedBox(
-                        //   width: screenWidth * 0.28,
-                        //   child: Text(
-                        //     "Crafting pixel-perfect Flutter apps with precision and creativity. I'm driven by innovation, constantly exploring new technologies to build seamless and intuitive experiences.",
-                        //     style: GoogleFonts.orbitron(
-                        //       color: const Color.fromARGB(197, 255, 255, 255),
-                        //       fontWeight: FontWeight.w400,
-                        //       fontSize: 16,
-                        //       letterSpacing: 1.8,
-                        //     ),
-                        //   ),
-                        // ),
-                        buildAnimatedIntroText(screenWidth),
-
-                        const SizedBox(height: 20),
-                        // TagLine(),
-                        SizedBox(height: 20),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          Padding(
-            padding: EdgeInsets.only(
-              left: screenWidth * 0.11,
-              top: screenHeight * 0.1,
-            ),
-            child: GlassTile(
-              width: screenWidth * 0.7,
-              height: screenHeight * 0.7,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.flutter_dash, size: 40, color: Colors.white),
-                  SizedBox(height: 8),
-                  Text("Flutter Power", style: TextStyle(color: Colors.white)),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.black.withOpacity(0.8),
+                  const Color.fromARGB(255, 31, 31, 31).withOpacity(0.6),
+                  Colors.transparent,
                 ],
               ),
             ),
+          ),
+
+          // Reactive Stars background
+          const ReactiveStars(
+            starCount: 150,
+            maxStarSize: 2.5,
+            parallaxStrength: 50,
+          ),
+
+          // Main content
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // AppBar
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: screenWidth * 0.11,
+                  vertical: 12,
+                ),
+                child: Row(
+                  children: [
+                    const SizedBox(width: 10),
+                    TagLine(),
+                    const SizedBox(width: 2),
+                    Expanded(
+                      child: Text(
+                        "",
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    GitHubButton(),
+                    HoverButton(buttonText: "Sponser", onPressed: () {}),
+                    const SizedBox(width: 20),
+                    HoverButton(buttonText: "CONTACT", onPressed: () {}),
+                  ],
+                ),
+              ),
+
+              // Section Body
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: screenWidth * 0.11,
+                        top: screenHeight * 0.1,
+                      ),
+                      child: SizedBox(
+                        width: screenWidth * 0.35,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(height: 20),
+                            Text(
+                              "Nayan Verma",
+                              style: Theme.of(
+                                context,
+                              ).textTheme.headlineMedium?.copyWith(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 90,
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                            buildAnimatedIntroText(screenWidth),
+                            const SizedBox(height: 20),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // Glass Tile
+              Padding(
+                padding: EdgeInsets.only(
+                  left: screenWidth * 0.11,
+                  top: screenHeight * 0.1,
+                ),
+                child: GlassTile(
+                  width: screenWidth * 0.7,
+                  height: screenHeight * 0.7,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(Icons.flutter_dash, size: 40, color: Colors.white),
+                      SizedBox(height: 8),
+                      Text(
+                        "Flutter Power",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
