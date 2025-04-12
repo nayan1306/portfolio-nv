@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_website/widgets/git_hub_button.dart';
+import 'package:portfolio_website/widgets/glass_tile.dart';
 import 'package:portfolio_website/widgets/hover_button.dart';
 import 'package:portfolio_website/widgets/intro_text.dart';
 import 'package:portfolio_website/widgets/tagline.dart';
@@ -106,6 +107,25 @@ class SectionOne extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+          ),
+
+          Padding(
+            padding: EdgeInsets.only(
+              left: screenWidth * 0.11,
+              top: screenHeight * 0.1,
+            ),
+            child: GlassTile(
+              width: screenWidth * 0.7,
+              height: screenHeight * 0.7,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.flutter_dash, size: 40, color: Colors.white),
+                  SizedBox(height: 8),
+                  Text("Flutter Power", style: TextStyle(color: Colors.white)),
+                ],
+              ),
             ),
           ),
         ],
