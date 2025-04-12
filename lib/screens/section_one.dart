@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_website/widgets/git_hub_button.dart';
 import 'package:portfolio_website/widgets/hover_button.dart';
 
 class SectionOne extends StatelessWidget {
@@ -35,7 +36,8 @@ class SectionOne extends StatelessWidget {
                     ),
                   ),
                 ),
-                IconButton(onPressed: () {}, icon: Image.asset("name")),
+
+                GitHubButton(),
                 HoverButton(buttonText: "Sponser", onPressed: () {}),
                 SizedBox(width: 20),
                 HoverButton(buttonText: "CONTACT", onPressed: () {}),
