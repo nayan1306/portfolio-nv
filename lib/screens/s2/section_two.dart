@@ -86,9 +86,14 @@ class SectionTwo extends StatelessWidget {
                   height: screenHeight * 0.5,
                 ),
                 const SizedBox(width: 20),
-                BlackCard(
+                LongCard1(
                   width: screenWidth * 0.45,
                   height: screenHeight * 0.5,
+                  title: "VaayuSphere",
+                  description:
+                      "A web-based air quality monitoring and complaning system",
+                  imagePath: "assets/card_icons/vaayusphere.png",
+                  linkUrl: "https://your-link.com",
                 ),
               ],
             ),
