@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_website/screens/s1/section_one.dart';
+import 'package:portfolio_website/screens/s2/section_two.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -46,10 +47,7 @@ class _LandingPageState extends State<LandingPage> {
               physics: const BouncingScrollPhysics(), // smooth scrolling
               children: const [
                 SectionOne(),
-                ResponsivePageWidget(
-                  title: 'Page 2',
-                  color: Color.fromARGB(255, 255, 255, 255),
-                ),
+                SectionTwo(),
                 ResponsivePageWidget(
                   title: 'Page 3',
                   color: Color.fromARGB(255, 26, 26, 26),
