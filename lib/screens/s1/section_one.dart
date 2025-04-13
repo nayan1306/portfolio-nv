@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_website/widgets/git_hub_button.dart';
-import 'package:portfolio_website/widgets/glass_tile.dart';
-import 'package:portfolio_website/widgets/hover_button.dart';
-import 'package:portfolio_website/widgets/intro_text.dart';
-import 'package:portfolio_website/widgets/stars_bg.dart';
-import 'package:portfolio_website/widgets/tagline.dart';
+import 'package:portfolio_website/screens/s1/widgets/git_hub_button.dart';
+import 'package:portfolio_website/screens/s1/widgets/glass_card.dart';
+import 'package:portfolio_website/screens/s1/widgets/hover_button.dart';
+import 'package:portfolio_website/screens/s1/widgets/intro_text.dart';
+import 'package:portfolio_website/screens/s1/widgets/stars_bg.dart';
+import 'package:portfolio_website/screens/s1/widgets/tagline.dart';
 
 class SectionOne extends StatelessWidget {
   const SectionOne({super.key});

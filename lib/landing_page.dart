@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_website/screens/section_one.dart';
+import 'package:portfolio_website/screens/s1/section_one.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
