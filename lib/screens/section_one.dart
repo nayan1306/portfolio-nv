@@ -37,7 +37,7 @@ class SectionOne extends StatelessWidget {
 
           // Reactive Stars background
           const ReactiveStars(
-            starCount: 150,
+            starCount: 250,
             maxStarSize: 2.5,
             parallaxStrength: 50,
           ),
