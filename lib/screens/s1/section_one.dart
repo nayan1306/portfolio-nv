@@ -3,6 +3,7 @@ import 'package:portfolio_website/screens/s1/widgets/git_hub_button.dart';
 import 'package:portfolio_website/screens/s1/widgets/glass_card.dart';
 import 'package:portfolio_website/screens/s1/widgets/hover_button.dart';
 import 'package:portfolio_website/screens/s1/widgets/intro_text.dart';
+import 'package:portfolio_website/screens/s1/widgets/resume_button.dart';
 import 'package:portfolio_website/screens/s1/widgets/stars_bg.dart';
 import 'package:portfolio_website/screens/s1/widgets/tagline.dart';
 
@@ -69,15 +70,16 @@ class SectionOne extends StatelessWidget {
                       ),
                     ),
                     GitHubButton(),
-                    HoverButton(
-                      buttonText: "Resume",
-                      onPressed:
-                          () => Scrollable.ensureVisible(
-                            context,
-                            duration: const Duration(milliseconds: 800),
-                            curve: Curves.easeInOut,
-                          ),
-                    ),
+                    // HoverButton(
+                    //   buttonText: "Resume",
+                    //   onPressed:
+                    //       () => Scrollable.ensureVisible(
+                    //         context,
+                    //         duration: const Duration(milliseconds: 800),
+                    //         curve: Curves.easeInOut,
+                    //       ),
+                    // ),
+                    ResumeButton(buttonText: "Resume"),
                     const SizedBox(width: 20),
                     HoverButton(
                       buttonText: "CONTACT",
