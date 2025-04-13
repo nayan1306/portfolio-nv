@@ -13,7 +13,7 @@ class SectionTwo extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      height: screenHeight * 2.8,
+      height: screenHeight * 2.2,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
@@ -101,7 +101,17 @@ class SectionTwo extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
+            Text(
+              "Tools and technologies I have worked with and am proficient in.",
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: Colors.black87,
+                fontWeight: FontWeight.w400,
+                fontSize: 20,
+                letterSpacing: 1.2,
+              ),
+            ),
+            const SizedBox(height: 40),
 
             // Centered Dock
             Center(
