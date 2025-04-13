@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/screens/s2/widgets/black_card.dart';
+import 'package:portfolio_website/screens/s2/widgets/tools_and_technologies.dart';
 
 class SectionTwo extends StatelessWidget {
   const SectionTwo({super.key});
@@ -12,7 +13,7 @@ class SectionTwo extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      height: screenHeight * 1.5,
+      height: screenHeight * 2.8,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
@@ -85,6 +86,29 @@ class SectionTwo extends StatelessWidget {
                   height: screenHeight * 0.5,
                 ),
               ],
+            ),
+            SizedBox(height: screenHeight * 0.1),
+
+            // Tools & Technologies Heading
+            Text(
+              "Tools & Technologies",
+              style: GoogleFonts.robotoCondensed(
+                textStyle: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 60,
+                  letterSpacing: 1.5,
+                ),
+              ),
+            ),
+            const SizedBox(height: 30),
+
+            // Centered Dock
+            Center(
+              child: SizedBox(
+                width: screenWidth * 0.8,
+                child: const ToolsAndTechnologies(),
+              ),
             ),
           ],
         ),
