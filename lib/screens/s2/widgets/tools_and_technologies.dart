@@ -17,7 +17,24 @@ class _ToolsAndTechnologiesState extends State<ToolsAndTechnologies> {
   bool enableReordering = false;
   Duration animationDuration = const Duration(milliseconds: 200);
 
-  List<String> dockItems = List.generate(19, (_) => 'assets/cube.png');
+  List<String> dockItems = [
+    'assets/logos/L (17).png',
+    'assets/logos/L (14).png',
+    'assets/logos/L (16).png',
+    'assets/logos/L (7).png',
+    'assets/logos/L (5).png',
+    'assets/logos/L (2).png',
+    'assets/logos/L (18).png',
+    'assets/logos/L (1).png',
+    'assets/logos/L (20).png',
+    'assets/logos/L (19).png',
+    'assets/logos/L (23).png',
+    'assets/logos/L (22).png',
+    'assets/logos/L (21).png',
+    'assets/logos/L (3).png',
+    'assets/logos/11.png',
+    'assets/logos/12.png',
+  ];
 
   void _handleReorder(int oldIndex, int newIndex) {
     setState(() {
@@ -94,7 +111,40 @@ class _ToolsAndTechnologiesState extends State<ToolsAndTechnologies> {
                                 children:
                                     (scale) =>
                                         row
-                                            .map((item) => Image.asset(item))
+                                            .map(
+                                              (item) => Container(
+                                                decoration: BoxDecoration(
+                                                  color: const Color.fromARGB(
+                                                    208,
+                                                    255,
+                                                    255,
+                                                    255,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      color:
+                                                          const Color.fromARGB(
+                                                            255,
+                                                            0,
+                                                            0,
+                                                            0,
+                                                          ).withOpacity(0.3),
+                                                      blurRadius: 10,
+                                                      offset: const Offset(
+                                                        0,
+                                                        2,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                padding: const EdgeInsets.all(
+                                                  8,
+                                                ),
+                                                child: Image.asset(item),
+                                              ),
+                                            )
                                             .toList(),
                               ),
                             ),
