@@ -74,6 +74,7 @@ flutter:
     - assets/logo_nv.png
     - assets/socials/github.png
     - assets/logos/
+    - assets/socials/
     # - assets/giphy (1).gif
   #   - images/a_dot_ham.jpeg
 
