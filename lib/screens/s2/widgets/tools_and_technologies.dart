@@ -11,8 +11,8 @@ class ToolsAndTechnologies extends StatefulWidget {
 class _ToolsAndTechnologiesState extends State<ToolsAndTechnologies> {
   double scaleFactor = 1.2;
   double translateFactor = 1.5;
-  double radiusFactor = 5.5;
-  double iconSpacing = 6.0;
+  double radiusFactor = 3.5;
+  double iconSpacing = 4.0;
   bool enableReordering = false;
   Duration animationDuration = const Duration(milliseconds: 200);
 
@@ -45,46 +45,73 @@ class _ToolsAndTechnologiesState extends State<ToolsAndTechnologies> {
     });
   }
 
+  // Ensure no more than 10 items per row
+  List<List<String>> _getRows(int itemsPerRow) {
+    List<List<String>> rows = [];
+    for (int i = 0; i < dockItems.length; i += itemsPerRow) {
+      rows.add(
+        dockItems.sublist(
+          i,
+          i + itemsPerRow > dockItems.length
+              ? dockItems.length
+              : i + itemsPerRow,
+        ),
+      );
+    }
+    return rows;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        // Responsive Dock with horizontal scrolling to avoid overflow
-        SizedBox(
-          height: 100,
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              // Calculate the maximum icon size based on available width
-              double availableWidth = constraints.maxWidth;
-              double maxIconSize = availableWidth / dockItems.length;
+        LayoutBuilder(
+          builder: (context, constraints) {
+            // Define the number of items per row (fixed to 10)
+            int itemsPerRow = 10;
 
-              // Update the scaleFactor dynamically based on available space
-              double iconSize =
-                  maxIconSize > 60
-                      ? 60
-                      : maxIconSize; // Cap the icon size to a maximum value
+            // Calculate the icon size based on 10 items per row
+            double availableWidth = constraints.maxWidth;
+            double iconSize = availableWidth / itemsPerRow; // 10 items per row
+            iconSize = iconSize > 80 ? 80 : iconSize; // Cap the icon size to 80
 
-              return Expanded(
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: MacosDock(
-                    iconSize: iconSize,
-                    scaleFactor: scaleFactor,
-                    translateFactor: translateFactor,
-                    radiusFactor: radiusFactor,
-                    iconSpacing: iconSpacing,
-                    enableReordering: enableReordering,
-                    onReorder: _handleReorder,
-                    animationDuration: animationDuration,
-                    children:
-                        (scale) =>
-                            dockItems.map((item) => Image.asset(item)).toList(),
-                  ),
+            // Get rows with the appropriate number of items based on the icon size
+            List<List<String>> rows = _getRows(itemsPerRow);
+
+            return Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  spacing: 30,
+                  children:
+                      rows.map((row) {
+                        return SizedBox(
+                          width:
+                              constraints
+                                  .maxWidth, // Set a fixed width for the dock
+                          height: iconSize + 20,
+                          child: MacosDock(
+                            iconSize: iconSize,
+                            scaleFactor: scaleFactor,
+                            translateFactor: translateFactor,
+                            radiusFactor: radiusFactor,
+                            iconSpacing: iconSpacing,
+                            enableReordering: enableReordering,
+                            onReorder: _handleReorder,
+                            animationDuration: animationDuration,
+                            children:
+                                (scale) =>
+                                    row
+                                        .map((item) => Image.asset(item))
+                                        .toList(),
+                          ),
+                        );
+                      }).toList(),
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
         const SizedBox(height: 40),
       ],

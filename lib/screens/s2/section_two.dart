@@ -87,7 +87,7 @@ class SectionTwo extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: screenHeight * 0.1),
+            SizedBox(height: screenHeight * 0.15),
 
             // Tools & Technologies Heading
             Text(
