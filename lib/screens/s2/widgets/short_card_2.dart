@@ -87,7 +87,7 @@ class ShortCard2 extends StatelessWidget {
                         imagePath,
                         width: 80,
                         height: 80,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                         errorBuilder:
                             (_, __, ___) =>
                                 const Icon(Icons.image, color: Colors.white38),
@@ -96,27 +96,29 @@ class ShortCard2 extends StatelessWidget {
                   ),
                   const SizedBox(width: 26),
 
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 16),
-                      Text(
-                        title,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
+                  TiltParallax(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 16),
+                        Text(
+                          title,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        description,
-                        style: const TextStyle(
-                          color: Colors.white70,
-                          fontSize: 18,
+                        const SizedBox(height: 4),
+                        Text(
+                          description,
+                          style: const TextStyle(
+                            color: Colors.white70,
+                            fontSize: 18,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -136,15 +138,27 @@ class ShortCard2 extends StatelessWidget {
               // Bottom: "Explore More" as clickable text
               Center(
                 child: TiltParallax(
-                  child: GestureDetector(
-                    onTap: _launchURL,
-                    child: Text(
-                      subtitle,
-                      style: const TextStyle(
-                        color: Color.fromARGB(255, 146, 146, 146),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        decoration: TextDecoration.underline,
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: GestureDetector(
+                      onTap: _launchURL,
+                      child: AnimatedDefaultTextStyle(
+                        duration: const Duration(milliseconds: 200),
+                        style:
+                            Theme.of(context).brightness == Brightness.light
+                                ? const TextStyle(
+                                  color: Color.fromARGB(255, 146, 146, 146),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  // decoration: TextDecoration.underline,
+                                )
+                                : const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  // decoration: TextDecoration.underline,
+                                ),
+                        child: Text(subtitle),
                       ),
                     ),
                   ),
