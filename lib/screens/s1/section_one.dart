@@ -7,7 +7,9 @@ import 'package:portfolio_website/screens/s1/widgets/stars_bg.dart';
 import 'package:portfolio_website/screens/s1/widgets/tagline.dart';
 
 class SectionOne extends StatelessWidget {
-  const SectionOne({super.key});
+  const SectionOne({super.key, required this.scrollController});
+
+  final ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) {
@@ -67,9 +69,26 @@ class SectionOne extends StatelessWidget {
                       ),
                     ),
                     GitHubButton(),
-                    HoverButton(buttonText: "Sponser", onPressed: () {}),
+                    HoverButton(
+                      buttonText: "Resume",
+                      onPressed:
+                          () => Scrollable.ensureVisible(
+                            context,
+                            duration: const Duration(milliseconds: 800),
+                            curve: Curves.easeInOut,
+                          ),
+                    ),
                     const SizedBox(width: 20),
-                    HoverButton(buttonText: "CONTACT", onPressed: () {}),
+                    HoverButton(
+                      buttonText: "CONTACT",
+                      onPressed: () {
+                        scrollController.animateTo(
+                          scrollController.position.maxScrollExtent + 700,
+                          duration: const Duration(milliseconds: 800),
+                          curve: Curves.easeInOut,
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),

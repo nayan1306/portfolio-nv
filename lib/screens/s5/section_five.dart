@@ -3,7 +3,7 @@ import 'package:portfolio_website/screens/s5/widgets/email_copy_box.dart';
 import 'package:portfolio_website/screens/s5/widgets/social_button.dart';
 
 class SectionFive extends StatelessWidget {
-  const SectionFive({super.key});
+  const SectionFive({super.key}); // Accepts a Key
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +11,7 @@ class SectionFive extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Container(
+      key: key, // Use the passed key here
       width: double.infinity,
       height: screenHeight * 0.7,
       decoration: BoxDecoration(
@@ -90,7 +91,6 @@ class SectionFive extends StatelessWidget {
                       width: screenWidth * 0.04,
                       height: screenHeight * 0.04,
                     ),
-
                     Text(
                       "Crafted with precision",
                       style: TextStyle(

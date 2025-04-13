@@ -14,6 +14,7 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
   final ScrollController _scrollController = ScrollController();
+  final GlobalKey sectionFiveKey = GlobalKey();
 
   @override
   void dispose() {
@@ -48,12 +49,12 @@ class _LandingPageState extends State<LandingPage> {
               controller: _scrollController,
 
               physics: const BouncingScrollPhysics(), // smooth scrolling
-              children: const [
-                SectionOne(),
-                SectionTwo(),
-                SectionThree(),
-                SectionFour(),
-                SectionFive(),
+              children: [
+                SectionOne(scrollController: _scrollController),
+                const SectionTwo(),
+                const SectionThree(),
+                const SectionFour(),
+                SectionFive(key: sectionFiveKey),
               ],
             ),
           ),
