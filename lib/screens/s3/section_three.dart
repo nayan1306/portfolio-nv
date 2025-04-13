@@ -14,6 +14,7 @@ class _SectionThreeState extends State<SectionThree>
   final ValueNotifier<double> _scrollProgress = ValueNotifier<double>(0.0);
   late AnimationController _fadeInController;
   bool _showScrollIndicator = true;
+  // ignore: unused_field
   double _sliderValue = 0.0;
   // Flag to avoid feedback loops between scroll and slider
   bool _isUserScrolling = false;
