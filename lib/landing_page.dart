@@ -4,7 +4,6 @@ import 'package:portfolio_website/screens/s2/section_two.dart';
 import 'package:portfolio_website/screens/s3/section_three.dart';
 import 'package:portfolio_website/screens/s4/section_four.dart';
 import 'package:portfolio_website/screens/s5/section_five.dart';
-import 'package:portfolio_website/screens/s6/section_six.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
