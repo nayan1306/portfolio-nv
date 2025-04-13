@@ -89,30 +89,6 @@ class SectionTwo extends StatelessWidget {
             ),
             SizedBox(height: screenHeight * 0.15),
 
-            // // Tools & Technologies Heading
-            // Text(
-            //   "Tools & Technologies",
-            //   style: GoogleFonts.robotoCondensed(
-            //     textStyle: Theme.of(context).textTheme.headlineSmall?.copyWith(
-            //       color: Colors.black,
-            //       fontWeight: FontWeight.bold,
-            //       fontSize: 60,
-            //       letterSpacing: 1.5,
-            //     ),
-            //   ),
-            // ),
-            // const SizedBox(height: 20),
-            // Text(
-            //   "Tools and technologies I have worked with and am proficient in.",
-            //   style: Theme.of(context).textTheme.titleLarge?.copyWith(
-            //     color: Colors.black87,
-            //     fontWeight: FontWeight.w400,
-            //     fontSize: 20,
-            //     letterSpacing: 1.2,
-            //   ),
-            // ),
-            // const SizedBox(height: 40),
-
             // Centered Dock
             Center(
               child: SizedBox(
