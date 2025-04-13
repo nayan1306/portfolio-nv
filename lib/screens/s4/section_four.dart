@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio_website/screens/s2/widgets/black_card.dart';
-import 'package:portfolio_website/screens/s2/widgets/tools_and_technologies.dart';
+import 'package:portfolio_website/screens/s4/widgets/glass_card_placeholder.dart';
 
 class SectionFour extends StatelessWidget {
   const SectionFour({super.key});
@@ -13,7 +12,7 @@ class SectionFour extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      height: screenHeight * 2.2,
+      height: screenHeight * 1.58,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
@@ -54,9 +53,65 @@ class SectionFour extends StatelessWidget {
               ),
             ),
 
-            SizedBox(height: screenHeight * 0.1),
+            SizedBox(height: screenHeight * 0.05),
 
-            // First Row of Cards
+            GridView.count(
+              crossAxisCount: 3,
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 20,
+              padding: const EdgeInsets.all(16),
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              childAspectRatio: 1.5, // increased ratio for smaller cards
+              children: [
+                GlassCertificateCard(
+                  imageUrl:
+                      'https://raw.githubusercontent.com/nayan1306/assets/refs/heads/main/portfolio/c%20(2).png',
+                  label: 'Machine Learning',
+                ),
+                GlassCertificateCard(
+                  imageUrl:
+                      'https://raw.githubusercontent.com/nayan1306/assets/refs/heads/main/portfolio/c%20(5).png',
+                  label: 'Deep Learning',
+                ),
+                GlassCertificateCard(
+                  imageUrl:
+                      'https://raw.githubusercontent.com/nayan1306/assets/refs/heads/main/portfolio/c%20(8).png',
+                  label: 'AI for Everyone',
+                ),
+                GlassCertificateCard(
+                  imageUrl:
+                      'https://raw.githubusercontent.com/nayan1306/assets/refs/heads/main/portfolio/c%20(9).png',
+                  label: 'Data Analytics',
+                ),
+                GlassCertificateCard(
+                  imageUrl:
+                      'https://raw.githubusercontent.com/nayan1306/assets/refs/heads/main/portfolio/c%20(3).png',
+                  label: 'Computer Vision',
+                ),
+                GlassCertificateCard(
+                  imageUrl:
+                      'https://raw.githubusercontent.com/nayan1306/assets/refs/heads/main/portfolio/c%20(4).png',
+                  label: 'Python Programming',
+                ),
+                GlassCertificateCard(
+                  imageUrl:
+                      'https://raw.githubusercontent.com/nayan1306/assets/refs/heads/main/portfolio/c%20(1).png',
+                  label: 'Data Analytics',
+                ),
+                GlassCertificateCard(
+                  imageUrl:
+                      'https://raw.githubusercontent.com/nayan1306/assets/refs/heads/main/portfolio/c%20(6).png',
+                  label: 'Computer Vision',
+                ),
+                GlassCertificateCard(
+                  imageUrl:
+                      'https://raw.githubusercontent.com/nayan1306/assets/refs/heads/main/portfolio/c%20(7).png',
+                  label: 'Python Programming',
+                ),
+              ],
+            ),
+
             SizedBox(height: screenHeight * 0.15),
           ],
         ),
