@@ -3,6 +3,7 @@ import 'package:portfolio_website/screens/s1/section_one.dart';
 import 'package:portfolio_website/screens/s2/section_two.dart';
 import 'package:portfolio_website/screens/s3/section_three.dart';
 import 'package:portfolio_website/screens/s4/section_four.dart';
+import 'package:portfolio_website/screens/s5/section_five.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -52,10 +53,7 @@ class _LandingPageState extends State<LandingPage> {
                 SectionTwo(),
                 SectionThree(),
                 SectionFour(),
-                ResponsivePageWidget(
-                  title: 'Page 5',
-                  color: Color.fromARGB(255, 0, 0, 0),
-                ),
+                SectionFive(),
               ],
             ),
           ),
