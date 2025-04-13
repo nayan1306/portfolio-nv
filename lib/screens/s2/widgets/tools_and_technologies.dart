@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:macos_dock/macos_dock.dart';
 
 class ToolsAndTechnologies extends StatefulWidget {
@@ -16,27 +17,7 @@ class _ToolsAndTechnologiesState extends State<ToolsAndTechnologies> {
   bool enableReordering = false;
   Duration animationDuration = const Duration(milliseconds: 200);
 
-  List<String> dockItems = [
-    'assets/cube.png',
-    'assets/cube.png',
-    'assets/cube.png',
-    'assets/cube.png',
-    'assets/cube.png',
-    'assets/cube.png',
-    'assets/cube.png',
-    'assets/cube.png',
-    'assets/cube.png',
-    'assets/cube.png',
-    'assets/cube.png',
-    'assets/cube.png',
-    'assets/cube.png',
-    'assets/cube.png',
-    'assets/cube.png',
-    'assets/cube.png',
-    'assets/cube.png',
-    'assets/cube.png',
-    'assets/cube.png',
-  ];
+  List<String> dockItems = List.generate(19, (_) => 'assets/cube.png');
 
   void _handleReorder(int oldIndex, int newIndex) {
     setState(() {
@@ -45,17 +26,11 @@ class _ToolsAndTechnologiesState extends State<ToolsAndTechnologies> {
     });
   }
 
-  // Ensure no more than 10 items per row
   List<List<String>> _getRows(int itemsPerRow) {
     List<List<String>> rows = [];
     for (int i = 0; i < dockItems.length; i += itemsPerRow) {
       rows.add(
-        dockItems.sublist(
-          i,
-          i + itemsPerRow > dockItems.length
-              ? dockItems.length
-              : i + itemsPerRow,
-        ),
+        dockItems.sublist(i, (i + itemsPerRow).clamp(0, dockItems.length)),
       );
     }
     return rows;
@@ -67,44 +42,62 @@ class _ToolsAndTechnologiesState extends State<ToolsAndTechnologies> {
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
+        // Tools & Technologies Heading
+        Text(
+          "Tools & Technologies",
+          style: GoogleFonts.robotoCondensed(
+            textStyle: Theme.of(context).textTheme.headlineSmall?.copyWith(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 70,
+              letterSpacing: 1.5,
+            ),
+          ),
+        ),
+        const SizedBox(height: 10),
+        Text(
+          "Tools and technologies I have worked with and am proficient in.",
+          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+            color: Colors.black87,
+            fontWeight: FontWeight.w400,
+            fontSize: 20,
+            letterSpacing: 1.2,
+          ),
+        ),
+        const SizedBox(height: 40),
         LayoutBuilder(
           builder: (context, constraints) {
-            // Define the number of items per row (fixed to 10)
-            int itemsPerRow = 10;
+            const int itemsPerRow = 10;
+            double iconSize = (constraints.maxWidth / itemsPerRow).clamp(0, 80);
 
-            // Calculate the icon size based on 10 items per row
-            double availableWidth = constraints.maxWidth;
-            double iconSize = availableWidth / itemsPerRow; // 10 items per row
-            iconSize = iconSize > 80 ? 80 : iconSize; // Cap the icon size to 80
-
-            // Get rows with the appropriate number of items based on the icon size
             List<List<String>> rows = _getRows(itemsPerRow);
 
             return Expanded(
               child: SingleChildScrollView(
                 child: Column(
-                  spacing: 30,
                   children:
                       rows.map((row) {
-                        return SizedBox(
-                          width:
-                              constraints
-                                  .maxWidth, // Set a fixed width for the dock
-                          height: iconSize + 20,
-                          child: MacosDock(
-                            iconSize: iconSize,
-                            scaleFactor: scaleFactor,
-                            translateFactor: translateFactor,
-                            radiusFactor: radiusFactor,
-                            iconSpacing: iconSpacing,
-                            enableReordering: enableReordering,
-                            onReorder: _handleReorder,
-                            animationDuration: animationDuration,
-                            children:
-                                (scale) =>
-                                    row
-                                        .map((item) => Image.asset(item))
-                                        .toList(),
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          child: Center(
+                            child: SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.1,
+                              child: MacosDock(
+                                iconSize: iconSize,
+                                scaleFactor: scaleFactor,
+                                translateFactor: translateFactor,
+                                radiusFactor: radiusFactor,
+                                iconSpacing: iconSpacing,
+                                enableReordering: enableReordering,
+                                onReorder: _handleReorder,
+                                animationDuration: animationDuration,
+                                children:
+                                    (scale) =>
+                                        row
+                                            .map((item) => Image.asset(item))
+                                            .toList(),
+                              ),
+                            ),
                           ),
                         );
                       }).toList(),
