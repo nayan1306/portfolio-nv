@@ -87,9 +87,10 @@ class _TagLineState extends State<TagLine> {
             shaderCallback:
                 (rect) => const LinearGradient(
                   colors: [
-                    Color(0xFFBFF098),
-                    Color(0xFF6FD6FF),
-                    // Colors.white,
+                    Color.fromARGB(255, 104, 104, 104),
+                    Color.fromARGB(255, 231, 231, 231),
+                    Colors.white,
+                    Color.fromARGB(255, 82, 82, 82),
                   ],
                 ).createShader(rect),
             child: Text(
