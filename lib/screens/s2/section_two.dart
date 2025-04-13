@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/screens/s2/widgets/black_card.dart';
 import 'package:portfolio_website/screens/s2/widgets/long_card_1.dart';
+import 'package:portfolio_website/screens/s2/widgets/short_card_1.dart';
 import 'package:portfolio_website/screens/s2/widgets/tools_and_technologies.dart';
 
 class SectionTwo extends StatelessWidget {
@@ -69,9 +70,13 @@ class SectionTwo extends StatelessWidget {
                   linkUrl: "https://your-link.com",
                 ),
                 const SizedBox(width: 20),
-                BlackCard(
+                ShortCard1(
                   width: screenWidth * 0.25,
                   height: screenHeight * 0.5,
+                  title: "AARAV",
+                  description: "Mental health and wellness app",
+                  imagePath: "assets/card_icons/cover3.png",
+                  linkUrl: "https://your-link.com",
                 ),
               ],
             ),
