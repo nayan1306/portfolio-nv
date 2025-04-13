@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/screens/s2/widgets/black_card.dart';
+import 'package:portfolio_website/screens/s2/widgets/long_card_1.dart';
 import 'package:portfolio_website/screens/s2/widgets/tools_and_technologies.dart';
 
 class SectionTwo extends StatelessWidget {
@@ -59,9 +60,13 @@ class SectionTwo extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                BlackCard(
+                LongCard1(
                   width: screenWidth * 0.45,
                   height: screenHeight * 0.5,
+                  title: "ByG⧋ZE",
+                  description: "AI powered learning management system",
+                  imagePath: "assets/card_icons/bygaze.png",
+                  linkUrl: "https://your-link.com",
                 ),
                 const SizedBox(width: 20),
                 BlackCard(
