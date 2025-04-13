@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_website/screens/s1/section_one.dart';
 import 'package:portfolio_website/screens/s2/section_two.dart';
 import 'package:portfolio_website/screens/s3/section_three.dart';
+import 'package:portfolio_website/screens/s4/section_four.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -50,10 +51,7 @@ class _LandingPageState extends State<LandingPage> {
                 SectionOne(),
                 SectionTwo(),
                 SectionThree(),
-                ResponsivePageWidget(
-                  title: 'Page 4',
-                  color: Color.fromARGB(255, 255, 255, 255),
-                ),
+                SectionFour(),
                 ResponsivePageWidget(
                   title: 'Page 5',
                   color: Color.fromARGB(255, 0, 0, 0),
