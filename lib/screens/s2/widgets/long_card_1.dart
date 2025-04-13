@@ -72,81 +72,93 @@ class LongCard1 extends StatelessWidget {
             ],
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Top: Image with parallax, Title & Description
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  TiltParallax(
-                    size: const Offset(20, 20),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: Image.asset(
-                        imagePath,
-                        width: 80,
-                        height: 80,
-                        fit: BoxFit.cover,
-                        errorBuilder:
-                            (_, __, ___) =>
-                                const Icon(Icons.image, color: Colors.white38),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 26),
-
-                  TiltParallax(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(height: 16),
-                        Text(
-                          title,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
+              // Everything else goes into Expanded
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Top: Image with parallax, Title & Description
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          TiltParallax(
+                            size: const Offset(20, 20),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: Image.asset(
+                                imagePath,
+                                width: 80,
+                                height: 80,
+                                fit: BoxFit.cover,
+                                errorBuilder:
+                                    (_, __, ___) => const Icon(
+                                      Icons.image,
+                                      color: Colors.white38,
+                                    ),
+                              ),
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          description,
-                          style: const TextStyle(
+                          const SizedBox(width: 26),
+                          TiltParallax(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(height: 16),
+                                Text(
+                                  title,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 40,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  description,
+                                  style: const TextStyle(
+                                    color: Colors.white70,
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      const SizedBox(height: 16),
+
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Text(
+                          "``This is a sample motivation text that describes the project, this is a sample.``",
+                          style: GoogleFonts.poppins(
                             color: Colors.white70,
                             fontSize: 18,
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 16),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Text(
-                  "Motivation \nThis is a sample motivation text that describes the project, this is a sample motivation text that describes the project.",
-                  style: GoogleFonts.poppins(
-                    color: Colors.white70,
-                    fontSize: 18,
+                      ),
+
+                      Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Text(
+                          "This is a sample motivation text that describes the project, this is a sample motivation text that describes the project., this is a sample motivation text that describes the project., this is a sample motivation text that describes the project.",
+                          style: GoogleFonts.poppins(
+                            color: Colors.white70,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
 
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Text(
-                  "Description \nThis is a sample motivation text that describes the project, this is a sample motivation text that describes the project., this is a sample motivation text that describes the project., this is a sample motivation text that describes the project.",
-                  style: GoogleFonts.poppins(
-                    color: Colors.white70,
-                    fontSize: 18,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 16),
-
-              // Bottom: "Explore More" as clickable text
+              // Fixed Bottom: "Explore More"
+              const SizedBox(height: 8),
               Center(
                 child: TiltParallax(
                   child: MouseRegion(
@@ -161,13 +173,11 @@ class LongCard1 extends StatelessWidget {
                                   color: Color.fromARGB(255, 146, 146, 146),
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
-                                  // decoration: TextDecoration.underline,
                                 )
                                 : const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
-                                  // decoration: TextDecoration.underline,
                                 ),
                         child: Text(subtitle),
                       ),
@@ -175,6 +185,7 @@ class LongCard1 extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 12),
             ],
           ),
         ),
