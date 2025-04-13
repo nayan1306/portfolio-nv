@@ -72,10 +72,8 @@ class ShortCard1 extends StatelessWidget {
             ],
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Top: Image with parallax, Title & Description
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -95,7 +93,6 @@ class ShortCard1 extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 26),
-
                   TiltParallax(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -123,19 +120,25 @@ class ShortCard1 extends StatelessWidget {
                 ],
               ),
 
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Text(
-                  "Description \nThis is a sample motivation text that describes the project, this is a sample motivation text that describes the project., this is a sample motivation text that describes the project., this is a sample motivation text that describes the project.",
-                  style: GoogleFonts.poppins(
-                    color: Colors.white70,
-                    fontSize: 18,
+              const SizedBox(height: 16),
+
+              /// Expanded scrollable or growing content
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Text(
+                    "\nThis is a sample motivation text that describes the project, this is a sample motivation text that describes the project.",
+                    style: GoogleFonts.poppins(
+                      color: Colors.white70,
+                      fontSize: 18,
+                    ),
                   ),
                 ),
               ),
+
               const SizedBox(height: 16),
 
-              // Bottom: "Explore More" as clickable text
+              /// Fixed bottom "Explore more" button
               Center(
                 child: TiltParallax(
                   child: MouseRegion(
@@ -150,13 +153,11 @@ class ShortCard1 extends StatelessWidget {
                                   color: Color.fromARGB(255, 146, 146, 146),
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
-                                  // decoration: TextDecoration.underline,
                                 )
                                 : const TextStyle(
                                   color: Colors.white,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
-                                  // decoration: TextDecoration.underline,
                                 ),
                         child: Text(subtitle),
                       ),
