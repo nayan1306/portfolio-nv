@@ -44,6 +44,7 @@ dependencies:
   animated_text_kit: ^4.2.3
   flutter_tilt: ^3.2.1
   macos_dock: ^1.0.4
+  glassmorphism: ^3.0.0
 
 dev_dependencies:
   flutter_test:
