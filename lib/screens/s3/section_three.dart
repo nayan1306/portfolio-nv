@@ -310,29 +310,8 @@ class _SectionThreeState extends State<SectionThree>
               width: double.infinity,
               height: 30,
               color: Colors.transparent,
-              child: Stack(
-                children: [
-                  // // Custom slider thumb
-                  // Positioned(
-                  //   left: _sliderValue * screenWidth * (isMobile ? 0.9 : 0.78),
-                  //   top: -4,
-                  //   child: Container(
-                  //     width: 24,
-                  //     height: 24,
-                  //     decoration: BoxDecoration(
-                  //       color: const Color(0xFFFFD700),
-                  //       shape: BoxShape.circle,
-                  //       border: Border.all(color: Colors.white, width: 2),
-                  //       boxShadow: [
-                  //         BoxShadow(
-                  //           color: const Color(0xFFFFD700).withOpacity(0.5),
-                  //           blurRadius: 8,
-                  //           spreadRadius: 2,
-                  //         ),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
+              child: Stack(children: [
+                 
                 ],
               ),
             ),
