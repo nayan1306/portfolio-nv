@@ -1,3 +1,4 @@
+// Keep your imports the same
 import 'package:flutter/material.dart';
 import 'dart:math';
 
@@ -12,7 +13,7 @@ class ReactiveStars extends StatefulWidget {
     super.key,
     this.starCount = 100,
     this.maxStarSize = 2.5,
-    this.parallaxStrength = 40,
+    this.parallaxStrength = 80, // Increased for stronger motion
   });
 
   @override
@@ -23,9 +24,11 @@ class _ReactiveStarsState extends State<ReactiveStars>
     with SingleTickerProviderStateMixin {
   Offset mouseOffset = Offset.zero;
   final Random random = Random();
+
   late List<Offset> starPositions;
   late List<double> starSizes;
   late List<double> starPhases;
+  late List<double> starDepths;
   late List<Offset> starVelocities;
 
   late AnimationController _controller;
@@ -55,6 +58,10 @@ class _ReactiveStarsState extends State<ReactiveStars>
     starPhases = List.generate(
       widget.starCount,
       (_) => random.nextDouble() * 2 * pi,
+    );
+    starDepths = List.generate(
+      widget.starCount,
+      (_) => random.nextDouble() * 0.5 + 0.5, // Depth from 0.5 to 1.0
     );
     starVelocities = List.generate(
       widget.starCount,
@@ -94,7 +101,6 @@ class _ReactiveStarsState extends State<ReactiveStars>
     final size = MediaQuery.of(context).size;
     final newOffset = (event.position - size.center(Offset.zero)) / size.width;
 
-    // Avoid triggering too many setStates for tiny mouse movements
     if ((newOffset - mouseOffset).distance > 0.001) {
       setState(() => mouseOffset = newOffset);
     }
@@ -116,6 +122,7 @@ class _ReactiveStarsState extends State<ReactiveStars>
           stars: starPositions,
           sizes: starSizes,
           phases: starPhases,
+          depths: starDepths,
           time: _cumulativeTime,
           offset: mouseOffset,
           parallaxStrength: widget.parallaxStrength,
@@ -129,6 +136,7 @@ class StarPainter extends CustomPainter {
   final List<Offset> stars;
   final List<double> sizes;
   final List<double> phases;
+  final List<double> depths;
   final double time;
   final Offset offset;
   final double parallaxStrength;
@@ -137,6 +145,7 @@ class StarPainter extends CustomPainter {
     required this.stars,
     required this.sizes,
     required this.phases,
+    required this.depths,
     required this.time,
     required this.offset,
     required this.parallaxStrength,
@@ -150,50 +159,59 @@ class StarPainter extends CustomPainter {
     for (int i = 0; i < stars.length; i++) {
       final normalized = stars[i];
       final baseSize = sizes[i];
+      final depth = depths[i];
 
-      // Calculate star screen position with parallax.
+      // Parallax offset increases with depth
       final pos = Offset(
-        normalized.dx * size.width + offset.dx * parallaxStrength,
-        normalized.dy * size.height + offset.dy * parallaxStrength,
+        normalized.dx * size.width + offset.dx * parallaxStrength * depth,
+        normalized.dy * size.height + offset.dy * parallaxStrength * depth,
       );
 
-      // Skip if outside screen bounds (small optimization).
       if (pos.dx < 0 ||
           pos.dx > size.width ||
           pos.dy < 0 ||
           pos.dy > size.height)
         continue;
 
-      // Distance to mouse determines brightness and size multiplier.
       final distToMouse = (pos - mousePos).distance;
-      final proximityFactor = (1.0 - (distToMouse / 250).clamp(0, 1)); // 0 to 1
+      final proximityFactor =
+          (1.0 - (distToMouse / 200).clamp(0, 1)); // stronger range
 
-      // Twinkle shimmer
-      final shimmer = 0.5 + 0.5 * sin(time * 2 * pi + phases[i]);
+      // Twinkle shimmer with subtle sway
+      final shimmer = 0.6 + 0.4 * sin(time * 3 + phases[i]);
 
-      // Final size and color
+      // Orbital wiggle effect
+      final orbitalOffset = Offset(
+        cos(time * 2 + phases[i]) * 1.5 * proximityFactor,
+        sin(time * 2 + phases[i]) * 1.5 * proximityFactor,
+      );
+
       final dynamicSize =
-          baseSize * (0.8 + 0.2 * shimmer) * (0.6 + 0.4 * proximityFactor);
+          baseSize * (0.7 + 0.3 * shimmer) * (0.5 + 0.7 * proximityFactor);
       final color = Colors.white.withOpacity(
-        (0.4 + 0.5 * shimmer) * (0.5 + 0.5 * proximityFactor),
+        (0.35 + 0.65 * shimmer) * (0.4 + 0.6 * proximityFactor),
       );
 
       final paint = Paint()..color = color;
 
-      // Glow
-      final glowRect = Rect.fromCircle(center: pos, radius: dynamicSize * 2.5);
+      final actualPos = pos + orbitalOffset;
+
+      final glowRect = Rect.fromCircle(
+        center: actualPos,
+        radius: dynamicSize * 2.5,
+      );
       final gradient = RadialGradient(colors: [color, Colors.transparent]);
       final glowPaint =
           Paint()
             ..shader = gradient.createShader(glowRect)
             ..blendMode = BlendMode.plus;
 
-      canvas.drawCircle(pos, dynamicSize * 2.5, glowPaint);
-      canvas.drawCircle(pos, dynamicSize, paint);
+      canvas.drawCircle(actualPos, dynamicSize * 2.5, glowPaint);
+      canvas.drawCircle(actualPos, dynamicSize, paint);
     }
   }
 
   @override
-  bool shouldRepaint(covariant StarPainter oldDelegate) =>
-      oldDelegate.offset != offset || oldDelegate.time != time;
+  bool shouldRepaint(covariant StarPainter old) =>
+      old.offset != offset || old.time != time;
 }
