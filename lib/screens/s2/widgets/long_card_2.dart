@@ -61,6 +61,10 @@ class LongCard2 extends StatelessWidget {
           height: height,
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
+            image: const DecorationImage(
+              image: AssetImage("assets/stars_final.gif"),
+              fit: BoxFit.cover,
+            ),
             color: Colors.black,
             borderRadius: BorderRadius.circular(24),
             boxShadow: [
