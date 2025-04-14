@@ -24,13 +24,20 @@ class SocialButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final bool isMobile = screenWidth < 600;
+
+    // Adjust the image width based on screen size
+    final adjustedImageWidth = isMobile ? screenWidth * 0.15 : imageWidth;
+
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.black,
         elevation: 0,
+        padding: EdgeInsets.all(isMobile ? 8 : 12), // Adjust padding for mobile
       ),
       onPressed: _launchURL,
-      child: Image.asset(imagePath, width: imageWidth),
+      child: Image.asset(imagePath, width: adjustedImageWidth),
     );
   }
 }
