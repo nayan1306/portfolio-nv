@@ -61,6 +61,10 @@ class ShortCard1 extends StatelessWidget {
           height: height,
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
+            image: const DecorationImage(
+              image: AssetImage("assets/smr.gif"),
+              fit: BoxFit.cover,
+            ),
             color: Colors.black,
             borderRadius: BorderRadius.circular(24),
             boxShadow: [
@@ -150,9 +154,9 @@ class ShortCard1 extends StatelessWidget {
                         style:
                             Theme.of(context).brightness == Brightness.light
                                 ? const TextStyle(
-                                  color: Color.fromARGB(255, 146, 146, 146),
+                                  color: Color.fromARGB(255, 57, 57, 57),
                                   fontSize: 16,
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.bold,
                                 )
                                 : const TextStyle(
                                   color: Colors.white,
