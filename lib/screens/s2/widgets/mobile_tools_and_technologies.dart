@@ -104,7 +104,7 @@ class _MobileToolsAndTechnologiesState
                         child: Tilt(
                           borderRadius: BorderRadius.circular(12),
                           tiltConfig: const TiltConfig(
-                            angle: 20,
+                            angle: 40,
                             enableRevert: true,
                           ),
                           child: Container(
