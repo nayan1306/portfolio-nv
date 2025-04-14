@@ -65,8 +65,6 @@ class LongCard1 extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
         tiltConfig: TiltConfig(
           angle: 15.0,
-          // enableGestureSensors:
-          //     !kIsWeb && (Platform.isAndroid || Platform.isIOS),
           enableReverse: true,
           filterQuality: FilterQuality.medium,
           enableGestureHover: true,
