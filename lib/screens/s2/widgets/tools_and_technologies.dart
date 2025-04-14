@@ -55,109 +55,108 @@ class _ToolsAndTechnologiesState extends State<ToolsAndTechnologies> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        // Tools & Technologies Heading
-        Text(
-          "Tools & Technologies",
-          style: GoogleFonts.robotoCondensed(
-            textStyle: Theme.of(context).textTheme.headlineSmall?.copyWith(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 70,
-              letterSpacing: 1.5,
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    // Determine items per row based on width
+    int itemsPerRow;
+    if (screenWidth > 1200) {
+      itemsPerRow = 10;
+    } else if (screenWidth > 800) {
+      itemsPerRow = 6;
+    } else {
+      itemsPerRow = 4;
+    }
+
+    double iconSize = (screenWidth / (itemsPerRow * 1.5)).clamp(40, 80);
+    double titleFontSize =
+        screenWidth > 1000 ? 70 : (screenWidth > 600 ? 48 : 32);
+    double subtitleFontSize =
+        screenWidth > 1000 ? 20 : (screenWidth > 600 ? 16 : 14);
+
+    List<List<String>> rows = _getRows(itemsPerRow);
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Heading
+          Text(
+            "Tools & Technologies",
+            textAlign: TextAlign.center,
+            style: GoogleFonts.robotoCondensed(
+              textStyle: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: titleFontSize,
+                letterSpacing: 1.5,
+              ),
             ),
           ),
-        ),
-        const SizedBox(height: 10),
-        Text(
-          "Tools and technologies I have worked with and am proficient in.",
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-            color: Colors.black87,
-            fontWeight: FontWeight.w400,
-            fontSize: 20,
-            letterSpacing: 1.2,
+          const SizedBox(height: 10),
+          Text(
+            "Tools and technologies I have worked with and am proficient in.",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.black87,
+              fontWeight: FontWeight.w400,
+              fontSize: subtitleFontSize,
+              letterSpacing: 1.2,
+            ),
           ),
-        ),
-        const SizedBox(height: 40),
-        LayoutBuilder(
-          builder: (context, constraints) {
-            const int itemsPerRow = 10;
-            double iconSize = (constraints.maxWidth / itemsPerRow).clamp(0, 80);
+          const SizedBox(height: 40),
 
-            List<List<String>> rows = _getRows(itemsPerRow);
-
-            return Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children:
-                      rows.map((row) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                          child: Center(
-                            child: SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.1,
-                              child: MacosDock(
-                                iconSize: iconSize,
-                                scaleFactor: scaleFactor,
-                                translateFactor: translateFactor,
-                                radiusFactor: radiusFactor,
-                                iconSpacing: iconSpacing,
-                                enableReordering: enableReordering,
-                                onReorder: _handleReorder,
-                                animationDuration: animationDuration,
-                                children:
-                                    (scale) =>
-                                        row
-                                            .map(
-                                              (item) => Container(
-                                                decoration: BoxDecoration(
-                                                  color: const Color.fromARGB(
-                                                    208,
-                                                    255,
-                                                    255,
-                                                    255,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                      color:
-                                                          const Color.fromARGB(
-                                                            255,
-                                                            0,
-                                                            0,
-                                                            0,
-                                                          ).withOpacity(0.3),
-                                                      blurRadius: 10,
-                                                      offset: const Offset(
-                                                        0,
-                                                        2,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                padding: const EdgeInsets.all(
-                                                  8,
-                                                ),
-                                                child: Image.asset(item),
-                                              ),
-                                            )
-                                            .toList(),
-                              ),
-                            ),
-                          ),
-                        );
-                      }).toList(),
+          // Dock Rows
+          ...rows.map((row) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: Center(
+                child: SizedBox(
+                  height: screenHeight * 0.1,
+                  child: MacosDock(
+                    iconSize: iconSize,
+                    scaleFactor: scaleFactor,
+                    translateFactor: translateFactor,
+                    radiusFactor: radiusFactor,
+                    iconSpacing: iconSpacing,
+                    enableReordering: enableReordering,
+                    onReorder: _handleReorder,
+                    animationDuration: animationDuration,
+                    children:
+                        (scale) =>
+                            row.map((item) {
+                              return Container(
+                                decoration: BoxDecoration(
+                                  color: const Color.fromARGB(
+                                    208,
+                                    255,
+                                    255,
+                                    255,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.3),
+                                      blurRadius: 10,
+                                      offset: const Offset(0, 2),
+                                    ),
+                                  ],
+                                ),
+                                padding: const EdgeInsets.all(8),
+                                child: Image.asset(item),
+                              );
+                            }).toList(),
+                  ),
                 ),
               ),
             );
-          },
-        ),
-        const SizedBox(height: 40),
-      ],
+          }),
+
+          const SizedBox(height: 40),
+        ],
+      ),
     );
   }
 }
