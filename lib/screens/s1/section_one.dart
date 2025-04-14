@@ -16,7 +16,7 @@ class SectionOne extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
-    final responsiveHeight = screenHeight * 1.3;
+    final responsiveHeight = screenHeight * 1.6;
 
     return SizedBox(
       height: responsiveHeight,
@@ -40,7 +40,7 @@ class SectionOne extends StatelessWidget {
 
           // Reactive Stars background
           const ReactiveStars(
-            starCount: 250,
+            starCount: 550,
             maxStarSize: 2.5,
             parallaxStrength: 50,
           ),
@@ -135,23 +135,13 @@ class SectionOne extends StatelessWidget {
               // Glass Tile
               Padding(
                 padding: EdgeInsets.only(
-                  left: screenWidth * 0.11,
+                  left: screenWidth * 0.1,
                   top: screenHeight * 0.1,
+                  bottom: screenHeight * 0.2,
                 ),
-                child: GlassTile(
-                  width: screenWidth * 0.7,
-                  height: screenHeight * 0.7,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(Icons.flutter_dash, size: 40, color: Colors.white),
-                      SizedBox(height: 8),
-                      Text(
-                        "Flutter Power",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
+                child: GlassCard(
+                  width: screenWidth * 0.8,
+                  height: screenHeight * 0.8,
                 ),
               ),
             ],
