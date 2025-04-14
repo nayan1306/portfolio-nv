@@ -96,12 +96,12 @@ class _SectionThreeState extends State<SectionThree>
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
-    final bool isMobile = screenWidth < 768;
+    final bool isMobile = screenWidth < 600;
     final double horizontalPadding =
         isMobile ? screenWidth * 0.05 : screenWidth * 0.11;
 
     return Container(
-      height: isMobile ? screenHeight * 2.0 : screenHeight * 1.5,
+      height: isMobile ? screenHeight * 1.3 : screenHeight * 1.5,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
@@ -133,7 +133,7 @@ class _SectionThreeState extends State<SectionThree>
                   ).textTheme.headlineMedium?.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: isMobile ? 60 : 90,
+                    fontSize: isMobile ? 40 : 90,
                     letterSpacing: 2,
                   ),
                 ),
@@ -155,7 +155,7 @@ class _SectionThreeState extends State<SectionThree>
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.9),
                     fontWeight: FontWeight.w400,
-                    fontSize: isMobile ? 16 : 20,
+                    fontSize: isMobile ? 14 : 20,
                     letterSpacing: 1.2,
                     height: 1.5,
                   ),
@@ -601,13 +601,23 @@ class _TimelineTileState extends State<TimelineTile>
                     ),
                   ),
                   const SizedBox(height: 12),
-                  Text(
-                    widget.event.description,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.white.withOpacity(0.8),
-                    ),
-                  ),
+                  widget.isMobile
+                      ? Text(
+                        widget.event.description,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.white.withOpacity(0.8),
+                        ),
+                        maxLines: 5,
+                        overflow: TextOverflow.fade,
+                      )
+                      : Text(
+                        widget.event.description,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white.withOpacity(0.8),
+                        ),
+                      ),
 
                   const Spacer(),
 
