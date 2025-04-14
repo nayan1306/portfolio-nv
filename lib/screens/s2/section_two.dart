@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_website/screens/s2/widgets/long_card_1.dart';
+import 'package:portfolio_website/screens/s2/widgets/long_card_2.dart';
 import 'package:portfolio_website/screens/s2/widgets/short_card_1.dart';
 import 'package:portfolio_website/screens/s2/widgets/short_card_2.dart';
 import 'package:portfolio_website/screens/s2/widgets/tools_and_technologies.dart';
@@ -95,7 +96,7 @@ class SectionTwo extends StatelessWidget {
                   linkUrl: "https://your-link.com",
                 ),
                 const SizedBox(width: 20),
-                LongCard1(
+                LongCard2(
                   width: screenWidth * 0.45,
                   height: screenHeight * 0.5,
                   title: "VaayuSphere",
