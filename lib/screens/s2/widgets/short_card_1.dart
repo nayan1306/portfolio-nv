@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tilt/flutter_tilt.dart';
@@ -66,12 +65,11 @@ class ShortCard1 extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
         tiltConfig: TiltConfig(
           angle: 15.0,
-          enableGestureSensors:
-              !kIsWeb && (Platform.isAndroid || Platform.isIOS),
           enableReverse: true,
           filterQuality: FilterQuality.medium,
           enableGestureHover: true,
           enableGestureTouch: true,
+          enableGestureSensors: true,
           enableRevert: true,
           moveDuration: const Duration(milliseconds: 120),
           leaveDuration: const Duration(milliseconds: 350),

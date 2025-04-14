@@ -1,4 +1,4 @@
-import 'dart:io';
+// import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tilt/flutter_tilt.dart';
@@ -64,7 +64,22 @@ class LongCard2 extends StatelessWidget {
     return Center(
       child: Tilt(
         borderRadius: BorderRadius.circular(24),
-        tiltConfig: const TiltConfig(angle: 40, enableRevert: true),
+        tiltConfig: TiltConfig(
+          angle: 15.0,
+          enableReverse: true,
+          filterQuality: FilterQuality.medium,
+          enableGestureHover: true,
+          enableGestureTouch: true,
+          enableGestureSensors: true,
+          enableRevert: true,
+          moveDuration: const Duration(milliseconds: 120),
+          leaveDuration: const Duration(milliseconds: 350),
+          moveCurve: Curves.easeOutCubic,
+          leaveCurve: Curves.easeOut,
+          sensorFactor: 8.0,
+          enableSensorRevert: true,
+          sensorRevertFactor: 0.08,
+        ),
         child: Container(
           width: width,
           height: height,
