@@ -23,7 +23,7 @@ class SectionOne extends StatelessWidget {
     double sectionHeight =
         isMobile
             ? screenSize.height *
-                0.7 // More space on mobile
+                0.8 // More space on mobile
             : isTablet
             ? screenSize.height *
                 1.8 // Less space on tablet
@@ -119,6 +119,13 @@ class SectionOne extends StatelessWidget {
             ),
           ),
 
+          // Stars Background
+          ReactiveStars(
+            starCount: !isMobile ? 550 : 100,
+            maxStarSize: 2.5,
+            parallaxStrength: 50,
+          ),
+
           // Fixed GlassCard
           Positioned(
             left: contentPadding,
@@ -127,7 +134,7 @@ class SectionOne extends StatelessWidget {
                 !isMobile
                     ? screenSize.height * 0.68
                     : screenSize.height *
-                        0.40, // Fine-tune this to match your intro
+                        0.50, // Fine-tune this to match your intro
             child: AspectRatio(
               aspectRatio: 16 / 9,
               child: GlassCard(
@@ -135,13 +142,6 @@ class SectionOne extends StatelessWidget {
                 // height: null,
               ),
             ),
-          ),
-
-          // Stars Background
-          const ReactiveStars(
-            starCount: 550,
-            maxStarSize: 2.5,
-            parallaxStrength: 50,
           ),
         ],
       ),

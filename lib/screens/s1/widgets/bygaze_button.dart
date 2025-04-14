@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class BygazeButton extends StatefulWidget {
-  final String buttonText; // Accept the text as a parameter
+  final String buttonText;
 
   const BygazeButton({super.key, required this.buttonText});
 
@@ -18,7 +18,6 @@ class _BygazeButtonState extends State<BygazeButton> {
     const url =
         'https://drive.google.com/file/d/1MosoCVvnFzFP2L1Ilhm7D4EbPdiFcFmi/view?usp=sharing';
     final uri = Uri.parse(url);
-
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
     } else {
@@ -28,6 +27,13 @@ class _BygazeButtonState extends State<BygazeButton> {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = MediaQuery.of(context).size.width < 600;
+    final buttonPadding =
+        isMobile
+            ? const EdgeInsets.symmetric(horizontal: 12, vertical: 6)
+            : const EdgeInsets.symmetric(horizontal: 24, vertical: 12);
+    final fontSize = isMobile ? 12.0 : 16.0;
+
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
@@ -53,13 +59,14 @@ class _BygazeButtonState extends State<BygazeButton> {
               width: 1,
             ),
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          padding: buttonPadding,
         ),
         child: Text(
           widget.buttonText,
           style: GoogleFonts.poppins(
             color: Colors.white,
             fontWeight: FontWeight.w500,
+            fontSize: fontSize,
           ),
         ),
       ),
@@ -68,7 +75,7 @@ class _BygazeButtonState extends State<BygazeButton> {
 }
 
 class ByGazeDemo extends StatefulWidget {
-  final String buttonText; // Accept the text as a parameter
+  final String buttonText;
 
   const ByGazeDemo({super.key, required this.buttonText});
 
@@ -83,7 +90,6 @@ class _ByGazeDemoState extends State<ByGazeDemo> {
     const url =
         'https://drive.google.com/file/d/1MosoCVvnFzFP2L1Ilhm7D4EbPdiFcFmi/view?usp=sharing';
     final uri = Uri.parse(url);
-
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
     } else {
@@ -93,6 +99,13 @@ class _ByGazeDemoState extends State<ByGazeDemo> {
 
   @override
   Widget build(BuildContext context) {
+    final isMobile = MediaQuery.of(context).size.width < 600;
+    final buttonPadding =
+        isMobile
+            ? const EdgeInsets.symmetric(horizontal: 12, vertical: 6)
+            : const EdgeInsets.symmetric(horizontal: 24, vertical: 12);
+    final fontSize = isMobile ? 12.0 : 16.0;
+
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
@@ -118,13 +131,14 @@ class _ByGazeDemoState extends State<ByGazeDemo> {
               width: 1,
             ),
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          padding: buttonPadding,
         ),
         child: Text(
           widget.buttonText,
           style: GoogleFonts.poppins(
             color: Colors.white,
             fontWeight: FontWeight.w500,
+            fontSize: fontSize,
           ),
         ),
       ),
