@@ -13,7 +13,7 @@ class TagLine extends StatefulWidget {
 }
 
 class _TagLineState extends State<TagLine> {
-  List<String> tagLines = [
+  final List<String> tagLines = [
     'Integrity',
     'Curiosity',
     'Purpose',
@@ -21,13 +21,11 @@ class _TagLineState extends State<TagLine> {
     'Gratitude',
     'Empathy',
     'Wisdom',
-    'Authenticity',
     'Kindness',
     'Growth',
   ];
 
   int tagLine = 0;
-
   late Timer timer;
 
   @override
@@ -35,7 +33,7 @@ class _TagLineState extends State<TagLine> {
     super.initState();
     timer = Timer.periodic(
       Duration(milliseconds: (1800 * timeDilation).toInt()),
-      (timer) {
+      (_) {
         setState(() {
           tagLine = (tagLine + 1) % tagLines.length;
         });
@@ -51,6 +49,16 @@ class _TagLineState extends State<TagLine> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    // Responsive font sizes
+    final isMobile = screenWidth < 600;
+    final isTablet = screenWidth >= 600 && screenWidth < 1100;
+
+    double baseFontSize = isMobile ? 10 : (isTablet ? 18 : 20);
+    double tagFontSize = isMobile ? 12 : (isTablet ? 22 : 25);
+    double leftPadding = isMobile ? 10 : 16;
+
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -58,11 +66,11 @@ class _TagLineState extends State<TagLine> {
           'Driven by',
           style: GoogleFonts.robotoMono().copyWith(
             color: Colors.grey,
-            fontSize: 20,
+            fontSize: baseFontSize,
             fontWeight: FontWeight.w600,
           ),
-          strutStyle: const StrutStyle(
-            fontSize: 20,
+          strutStyle: StrutStyle(
+            fontSize: baseFontSize,
             height: 1,
             forceStrutHeight: true,
             leading: 1,
@@ -80,7 +88,6 @@ class _TagLineState extends State<TagLine> {
                   Colors.white,
                   Colors.white,
                   Colors.white.withOpacity(0),
-                  // Colors.white,
                 ],
               ).createShader(rect),
           child: ShaderMask(
@@ -98,7 +105,7 @@ class _TagLineState extends State<TagLine> {
                   style: GoogleFonts.gloriaHallelujah().copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 25,
+                    fontSize: tagFontSize,
                   ),
                 )
                 .roll(
@@ -107,7 +114,7 @@ class _TagLineState extends State<TagLine> {
                   tapeCurve: Curves.easeInOutCubic,
                   widthCurve: Curves.easeOutCubic,
                   widthDuration: const Duration(milliseconds: 1000),
-                  padding: const EdgeInsets.only(left: 16),
+                  padding: EdgeInsets.only(left: leftPadding),
                 )
                 .animate(
                   trigger: tagLine,

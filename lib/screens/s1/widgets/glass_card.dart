@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:portfolio_website/screens/s1/widgets/bygaze_button.dart';
 import 'package:video_player/video_player.dart';
 
 class GlassCard extends StatefulWidget {
@@ -48,7 +49,7 @@ class _GlassCardState extends State<GlassCard> {
             /// Video background
             if (_controller.value.isInitialized)
               FittedBox(
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
                 child: SizedBox(
                   width: _controller.value.size.width,
                   height: _controller.value.size.height,
@@ -82,6 +83,18 @@ class _GlassCardState extends State<GlassCard> {
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),
+            ),
+
+            Positioned(
+              bottom: 10,
+              left: 10,
+              child: Row(children: [ByGazeDemo(buttonText: "Solicit Preview")]),
+            ),
+
+            Positioned(
+              bottom: 10,
+              right: 10,
+              child: Row(children: [BygazeButton(buttonText: "Explore now ")]),
             ),
 
             /// Optional child (e.g., text or widgets)

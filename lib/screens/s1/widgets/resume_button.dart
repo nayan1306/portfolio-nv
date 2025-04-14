@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ResumeButton extends StatefulWidget {
-  final String buttonText; // Accept the text as a parameter
+  final String buttonText;
 
   const ResumeButton({super.key, required this.buttonText});
 
@@ -28,6 +28,20 @@ class _ResumeButtonState extends State<ResumeButton> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    // Responsive size adjustments
+    final isMobile = screenWidth < 600;
+    final isTablet = screenWidth >= 600 && screenWidth < 1100;
+
+    final double fontSize = isMobile ? 12 : (isTablet ? 14 : 16);
+    final EdgeInsets padding =
+        isMobile
+            ? const EdgeInsets.symmetric(horizontal: 6, vertical: 5)
+            : (isTablet
+                ? const EdgeInsets.symmetric(horizontal: 20, vertical: 11)
+                : const EdgeInsets.symmetric(horizontal: 24, vertical: 12));
+
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
@@ -53,13 +67,14 @@ class _ResumeButtonState extends State<ResumeButton> {
               width: 1,
             ),
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          padding: padding,
         ),
         child: Text(
           widget.buttonText,
           style: GoogleFonts.poppins(
             color: Colors.white,
             fontWeight: FontWeight.w500,
+            fontSize: fontSize,
           ),
         ),
       ),

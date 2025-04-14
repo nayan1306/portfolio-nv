@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HoverButton extends StatefulWidget {
-  final String buttonText; // Accept the text as a parameter
-  final VoidCallback onPressed; // Callback for tap
+  final String buttonText;
+  final VoidCallback onPressed;
 
   const HoverButton({
     super.key,
@@ -20,6 +20,21 @@ class _HoverButtonState extends State<HoverButton> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    // Responsive logic
+    final isMobile = screenWidth < 600;
+    final isTablet = screenWidth >= 600 && screenWidth < 1100;
+
+    final double fontSize = isMobile ? 10 : (isTablet ? 14 : 16);
+    final EdgeInsets padding =
+        isMobile
+            ? EdgeInsets
+                .zero // Zero padding for mobile
+            : (isTablet
+                ? const EdgeInsets.symmetric(horizontal: 20, vertical: 11)
+                : const EdgeInsets.symmetric(horizontal: 24, vertical: 12));
+
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
@@ -43,16 +58,19 @@ class _HoverButtonState extends State<HoverButton> {
               width: 1,
             ),
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          padding: padding,
         ),
-        child: Text(
-          widget.buttonText,
-          style: GoogleFonts.poppins(
-            color: Colors.white,
-            fontWeight: FontWeight.w500,
-            // fontSize: 18,
-          ),
-        ),
+        child:
+            isMobile
+                ? Icon(Icons.contact_mail, color: Colors.white, size: 16)
+                : Text(
+                  widget.buttonText,
+                  style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    fontSize: fontSize,
+                  ),
+                ),
       ),
     );
   }
