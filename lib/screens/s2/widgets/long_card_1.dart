@@ -164,22 +164,24 @@ class LongCard1 extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(15.0),
                         child: Text(
-                          "``This is a sample motivation text that describes the project, this is a sample.``",
+                          "ByGaze is an AI-powered edtech platform that enhances learning consistency and fosters creativity, leveraging advanced AI tools to personalize and optimize the student experience. Its innovative approach transforms the learning journey, making it more engaging, adaptive, and effective for every student.",
                           style: GoogleFonts.poppins(
                             color: Colors.white70,
                             fontSize: bodyFontSize,
                           ),
+                          textAlign: TextAlign.justify,
                         ),
                       ),
 
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15.0),
                         child: Text(
-                          "This is a sample motivation text that describes the project. This text continues with more details explaining the purpose, challenges, and results of the project.",
-                          style: GoogleFonts.poppins(
+                          "The purpose of education is to awaken the youth to their potential, empowering them to think deeply, act with purpose, and shape a better future through knowledge and integrity.",
+                          style: GoogleFonts.marhey(
                             color: Colors.white70,
                             fontSize: bodyFontSize,
                           ),
+                          textAlign: TextAlign.justify,
                         ),
                       ),
                     ],
