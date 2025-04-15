@@ -10,7 +10,7 @@ SizedBox buildAnimatedIntroText(double screenWidth) {
   if (screenWidth < 600) {
     // Mobile
     boxWidth = screenWidth * 0.85;
-    fontSize = 14;
+    fontSize = 12;
   } else if (screenWidth < 1100) {
     // Tablet
     boxWidth = screenWidth * 0.65;
@@ -24,18 +24,20 @@ SizedBox buildAnimatedIntroText(double screenWidth) {
   return SizedBox(
     width: boxWidth,
     child: DefaultTextStyle(
-      style: GoogleFonts.orbitron(
+      style: GoogleFonts.audiowide(
         fontSize: fontSize,
         fontWeight: FontWeight.w400,
-        color: const Color.fromARGB(197, 255, 255, 255),
+        color: const Color.fromARGB(255, 138, 138, 138),
         letterSpacing: 1.8,
       ),
       child: AnimatedTextKit(
         animatedTexts: [
           TypewriterAnimatedText(
-            "Crafting pixel-perfect Flutter apps with precision and creativity. "
-            "I'm driven by innovation, constantly exploring new technologies. "
-            "Building seamless and intuitive experiences, one widget at a time.",
+            "Engineering high-performance Flutter apps with pixel-perfect precision and architectural finesse. Passionate about scalable design systems and pushing the boundaries of what's possible.",
+            speed: const Duration(milliseconds: 50),
+          ),
+          TypewriterAnimatedText(
+            "Harnessing the power of AI and computer vision to build intelligent systems that interpret, analyze, and respond to the visual world with precision and purpose.",
             speed: const Duration(milliseconds: 50),
           ),
         ],

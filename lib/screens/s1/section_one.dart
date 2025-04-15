@@ -120,11 +120,12 @@ class SectionOne extends StatelessWidget {
           ),
 
           // Stars Background
-          ReactiveStars(
-            starCount: !isMobile ? 550 : 100,
-            maxStarSize: 2.5,
-            parallaxStrength: 50,
-          ),
+          if (!isMobile)
+            ReactiveStars(
+              starCount: !isMobile ? 550 : 100,
+              maxStarSize: 2.5,
+              parallaxStrength: 50,
+            ),
 
           // Fixed GlassCard
           Positioned(
