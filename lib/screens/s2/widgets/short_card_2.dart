@@ -164,22 +164,24 @@ class ShortCard2 extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(15.0),
                         child: Text(
-                          "``This is a sample motivation text that describes the project, this is a sample.``",
+                          "A simple chat application with Firebase integration, marking my entry into the Flutter universe. It was my first experience building seamless communication features using Flutter and Firebase.",
                           style: GoogleFonts.poppins(
                             color: Colors.white70,
                             fontSize: bodyFontSize,
                           ),
+                          textAlign: TextAlign.justify,
                         ),
                       ),
 
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15.0),
                         child: Text(
-                          "This is a sample motivation text that describes the project. This text continues with more details explaining the purpose, challenges, and results of the project.",
-                          style: GoogleFonts.poppins(
+                          "The journey begins the moment you take that first step forward.",
+                          style: GoogleFonts.marhey(
                             color: Colors.white70,
                             fontSize: bodyFontSize,
                           ),
+                          textAlign: TextAlign.justify,
                         ),
                       ),
                     ],
