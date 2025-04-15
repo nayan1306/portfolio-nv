@@ -105,11 +105,12 @@ class SectionFour extends StatelessWidget {
                       'https://raw.githubusercontent.com/nayan1306/assets/refs/heads/main/portfolio/c%20(6).png',
                   label: 'Computer Vision',
                 ),
-                GlassCertificateCard(
-                  imageUrl:
-                      'https://raw.githubusercontent.com/nayan1306/assets/refs/heads/main/portfolio/c%20(7).png',
-                  label: 'Python Programming',
-                ),
+                if (!isMobile)
+                  GlassCertificateCard(
+                    imageUrl:
+                        'https://raw.githubusercontent.com/nayan1306/assets/refs/heads/main/portfolio/c%20(7).png',
+                    label: 'Python Programming',
+                  ),
               ],
             ),
 

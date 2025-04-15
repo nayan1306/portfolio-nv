@@ -46,6 +46,10 @@ class _GlassCardState extends State<GlassCard> {
         child: Stack(
           fit: StackFit.expand,
           children: [
+            /// Show image while video is not initialized
+            if (!_controller.value.isInitialized)
+              Image.asset('assets/banner/banner_static.png', fit: BoxFit.cover),
+
             /// Video background
             if (_controller.value.isInitialized)
               FittedBox(

@@ -164,7 +164,7 @@ class LongCard1 extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(15.0),
                         child: Text(
-                          "ByGaze is an AI-powered edtech platform that enhances learning consistency and fosters creativity, leveraging advanced AI tools to personalize and optimize the student experience. Its innovative approach transforms the learning journey, making it more engaging, adaptive, and effective for every student.",
+                          "ByGaze is an AI-powered ed-tech platform that enhances the learning consistency and fosters creativity, leveraging advanced AI tools to personalize and optimize the student experience. Its innovative approach transforms the learning journey, making it more engaging, adaptive, and effective for every student.",
                           style: GoogleFonts.poppins(
                             color: Colors.white70,
                             fontSize: bodyFontSize,

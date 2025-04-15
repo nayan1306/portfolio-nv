@@ -114,7 +114,7 @@ class SectionOne extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 400), // Add extra scroll room
+                // const SizedBox(height: 400), // Add extra scroll room
               ],
             ),
           ),
