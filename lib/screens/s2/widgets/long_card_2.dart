@@ -165,22 +165,24 @@ class LongCard2 extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(15.0),
                         child: Text(
-                          "``This is a sample motivation text that describes the project, this is a sample.``",
+                          "Vaayu Sphere is an engaging tool that monitors real-time location-based AQI, providing detailed insights into weather parameters. It also features an anonymous complaint system that promptly alerts relevant authorities, ensuring swift resolution of issues.",
                           style: GoogleFonts.poppins(
                             color: Colors.white70,
                             fontSize: bodyFontSize,
                           ),
+                          textAlign: TextAlign.justify,
                         ),
                       ),
 
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15.0),
                         child: Text(
-                          "This is a sample motivation text that describes the project. This text continues with more details explaining the purpose, challenges, and results of the project.",
-                          style: GoogleFonts.poppins(
+                          "Pollution chokes our future; clean air is the breath of hope.",
+                          style: GoogleFonts.marhey(
                             color: Colors.white70,
                             fontSize: bodyFontSize,
                           ),
+                          textAlign: TextAlign.justify,
                         ),
                       ),
                     ],
