@@ -6,13 +6,11 @@ class GitHubButton extends StatelessWidget {
 
   void _launchGitHub() async {
     final uri = Uri.parse('https://github.com/nayan1306');
+
     if (await canLaunchUrl(uri)) {
-      await launchUrl(
-        uri,
-        mode: LaunchMode.platformDefault,
-      ); // for web compatibility
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
     } else {
-      throw 'Could not launch $uri';
+      debugPrint('Could not launch');
     }
   }
 

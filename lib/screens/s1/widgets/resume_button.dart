@@ -22,7 +22,7 @@ class _ResumeButtonState extends State<ResumeButton> {
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
     } else {
-      debugPrint('Could not launch $url');
+      debugPrint('Could not launch');
     }
   }
 
