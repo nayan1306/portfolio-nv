@@ -164,22 +164,24 @@ class ShortCard1 extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(15.0),
                         child: Text(
-                          "``This is a sample motivation text that describes the project, this is a sample.``",
+                          "This mental health application offers a range of unique tools, including features like memory dump, aggression release, and nature walk, along with 10 additional common methods designed to help individuals manage stress and improve their well-being.",
                           style: GoogleFonts.poppins(
                             color: Colors.white70,
                             fontSize: bodyFontSize,
                           ),
+                          textAlign: TextAlign.justify,
                         ),
                       ),
 
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15.0),
                         child: Text(
-                          "This is a sample motivation text that describes the project. This text continues with more details explaining the purpose, challenges, and results of the project.",
-                          style: GoogleFonts.poppins(
+                          "Mental health is a journey, not a destination.",
+                          style: GoogleFonts.marhey(
                             color: Colors.white70,
                             fontSize: bodyFontSize,
                           ),
+                          textAlign: TextAlign.justify,
                         ),
                       ),
                     ],
